@@ -25,4 +25,15 @@ model.compile(optimizer = 'adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(training_images, training_labels, epochs=100)
+model.fit(training_images, training_labels, epochs=4)
+
+print('EVALUATION:')
+model.evaluate(test_images, test_labels)
+
+print('CLASSIFICATIONS:')
+#These are the probabilities
+#that the image matches the label at that particular index. So, what the neural network
+#is reporting is that there’s a 91.4% chance that the item of clothing at index 0 is label 9.
+classifications = model.predict(test_images)
+print(classifications[0])
+print(test_labels[0])
